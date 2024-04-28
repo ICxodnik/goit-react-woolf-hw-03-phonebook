@@ -16,7 +16,7 @@ export default class ContactList extends Component {
     return (
       <ul>
         {this.props.contacts.map(el => (
-          <Contact data={el} />
+          <Contact key={el.id} name={el.name} />
         ))}
       </ul>
     );
