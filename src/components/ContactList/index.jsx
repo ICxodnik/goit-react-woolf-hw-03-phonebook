@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Contact from 'components/Contact';
 
 export default class ContactList extends Component {
   static propTypes = {
@@ -14,8 +15,8 @@ export default class ContactList extends Component {
   render() {
     return (
       <ul>
-        {this.props.contacts.map(x => (
-          <li key={x.id}>{x.name}</li>
+        {this.props.contacts.map(el => (
+          <Contact data={el} />
         ))}
       </ul>
     );
