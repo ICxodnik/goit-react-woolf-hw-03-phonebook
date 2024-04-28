@@ -2,6 +2,7 @@ import css from 'components/PhoneBook/index.module.css';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import Filter from 'components/Filter';
 
 export default class PhoneBook extends Component {
   //   static propTypes = {second: third}
@@ -25,8 +26,8 @@ export default class PhoneBook extends Component {
     });
   };
 
-  handleFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
+  handleFilter = value => {
+    this.setState({ filter: value });
   };
 
   getFilteredData() {
@@ -42,7 +43,6 @@ export default class PhoneBook extends Component {
   render() {
     return (
       <div>
-        <input onChange={this.handleFilter}></input>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -60,6 +60,7 @@ export default class PhoneBook extends Component {
           />
           <button type="submit">Add Contact</button>
         </form>
+        <Filter onChange={this.handleFilter} />
         <ul>
           {this.getFilteredData().map(x => (
             <li key={x.id}>{x.name}</li>
