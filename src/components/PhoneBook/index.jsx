@@ -7,7 +7,7 @@ export default class PhoneBook extends Component {
   //   static propTypes = {second: third}
   state = {
     contacts: [],
-    name: '',
+    filter: '',
   };
 
   handleSubmit = e => {
@@ -25,9 +25,24 @@ export default class PhoneBook extends Component {
     });
   };
 
+  handleFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
+  getFilteredData() {
+    let filter = this.state.filter.toLowerCase().trim();
+    if (!filter) {
+      return this.state.contacts;
+    }
+    return this.state.contacts.filter(el =>
+      el.name.toLowerCase().includes(filter)
+    );
+  }
+
   render() {
     return (
       <div>
+        <input onChange={this.handleFilter}></input>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -46,7 +61,7 @@ export default class PhoneBook extends Component {
           <button type="submit">Add Contact</button>
         </form>
         <ul>
-          {this.state.contacts.map(x => (
+          {this.getFilteredData().map(x => (
             <li key={x.id}>{x.name}</li>
           ))}
         </ul>
