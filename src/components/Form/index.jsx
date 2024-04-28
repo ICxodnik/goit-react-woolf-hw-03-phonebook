@@ -14,6 +14,7 @@ export default class Form extends Component {
       id: nanoid(),
     };
     this.props.onSubmit(user);
+    form.reset();
   };
   render() {
     return (

@@ -14,6 +14,7 @@ export default class PhoneBook extends Component {
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, user],
+        filter: '',
       };
     });
   };
@@ -36,7 +37,7 @@ export default class PhoneBook extends Component {
     return (
       <div>
         <Form onSubmit={this.handleSubmit} />
-        <Filter onChange={this.handleFilter} />
+        <Filter onChange={this.handleFilter} value={this.state.filter} />
         <ContactList contacts={this.getFilteredData()} />
       </div>
     );
