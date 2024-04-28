@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import Filter from 'components/Filter';
+import ContactList from 'components/ContactList';
 
 export default class PhoneBook extends Component {
   //   static propTypes = {second: third}
@@ -61,11 +62,7 @@ export default class PhoneBook extends Component {
           <button type="submit">Add Contact</button>
         </form>
         <Filter onChange={this.handleFilter} />
-        <ul>
-          {this.getFilteredData().map(x => (
-            <li key={x.id}>{x.name}</li>
-          ))}
-        </ul>
+        <ContactList contacts={this.getFilteredData()} />
       </div>
     );
   }
