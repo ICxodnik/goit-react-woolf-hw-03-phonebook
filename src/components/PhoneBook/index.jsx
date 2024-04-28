@@ -36,7 +36,9 @@ export default class PhoneBook extends Component {
   render() {
     return (
       <div>
+        <h1>Phonebook</h1>
         <Form onSubmit={this.handleSubmit} />
+        <h2>Contacts</h2>
         <Filter onChange={this.handleFilter} value={this.state.filter} />
         <ContactList contacts={this.getFilteredData()} />
       </div>
