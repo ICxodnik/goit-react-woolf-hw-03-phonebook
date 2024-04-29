@@ -1,0 +1,16 @@
+.contact {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 300px;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.contactList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-start
+}

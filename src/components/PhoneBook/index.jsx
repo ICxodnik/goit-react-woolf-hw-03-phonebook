@@ -28,6 +28,14 @@ export default class PhoneBook extends Component {
     this.setState({ filter: value });
   };
 
+  handleDelete = id => {
+    this.setState(prevState => {
+      return {
+        contacts: this.state.contacts.filter(x => x.id !== id),
+      };
+    });
+  };
+
   getFilteredData() {
     let filter = this.state.filter.toLowerCase().trim();
     if (!filter) {
@@ -45,7 +53,10 @@ export default class PhoneBook extends Component {
         <Form onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleFilter} value={this.state.filter} />
-        <ContactList contacts={this.getFilteredData()} />
+        <ContactList
+          contacts={this.getFilteredData()}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
