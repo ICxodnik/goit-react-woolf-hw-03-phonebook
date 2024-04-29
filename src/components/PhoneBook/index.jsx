@@ -48,7 +48,7 @@ export default class PhoneBook extends Component {
 
   render() {
     return (
-      <div>
+      <div className={css.phonebook}>
         <h1>Phonebook</h1>
         <Form onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
