@@ -13,8 +13,8 @@ export default class Form extends Component {
       number: form.elements.number.value,
       id: nanoid(),
     };
-    this.props.onSubmit(user);
-    form.reset();
+    let hasReset = this.props.onSubmit(user);
+    hasReset && form.reset();
   };
   render() {
     return (

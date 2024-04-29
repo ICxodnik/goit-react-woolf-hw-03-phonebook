@@ -11,12 +11,17 @@ export default class PhoneBook extends Component {
   };
 
   handleSubmit = user => {
+    if (this.state.contacts.some(x => x.name === user.name)) {
+      alert(`${user.name} is already in contacts.`);
+      return false;
+    }
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, user],
         filter: '',
       };
     });
+    return true;
   };
 
   handleFilter = value => {
