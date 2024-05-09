@@ -31,7 +31,7 @@ export default class PhoneBook extends Component {
   handleDelete = id => {
     this.setState(prevState => {
       return {
-        contacts: this.state.contacts.filter(x => x.id !== id),
+        contacts: prevState.contacts.filter(x => x.id !== id),
       };
     });
   };
