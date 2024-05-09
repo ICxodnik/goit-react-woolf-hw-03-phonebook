@@ -10,6 +10,16 @@ export default class PhoneBook extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const string = localStorage.getItem('contacts');
+    const contacts = string ? JSON.parse(string) : [];
+    this.setState({ contacts: contacts });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
+
   handleSubmit = user => {
     if (
       this.state.contacts.some(
