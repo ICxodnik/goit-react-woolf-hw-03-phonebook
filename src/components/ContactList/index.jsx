@@ -19,7 +19,7 @@ export default class ContactList extends Component {
       <ul className={css.contactList}>
         {this.props.contacts.map((el, number) => (
           <div className={css.contact} key={el.id}>
-            <span>{++number}.</span>
+            <span>{number + 1}.</span>
             <Contact data={el} />
             <button onClick={() => this.props.handleDelete(el.id)}>
               Delete
