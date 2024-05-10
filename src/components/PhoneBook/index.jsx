@@ -13,11 +13,15 @@ export default class PhoneBook extends Component {
   componentDidMount() {
     const string = localStorage.getItem('contacts');
     const contacts = string ? JSON.parse(string) : [];
-    this.setState({ contacts: contacts });
+    if (contacts.length) {
+      this.setState({ contacts: contacts });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
   }
 
   handleSubmit = user => {
